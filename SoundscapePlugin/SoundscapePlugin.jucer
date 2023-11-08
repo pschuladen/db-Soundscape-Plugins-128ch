@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="MFvkL5" name="SoundscapePlugin" projectType="audioplug" version="2.8.5"
-              bundleIdentifier="com.dbaudio.SoundscapePlugin" pluginName="d&amp;b Soundscape"
-              pluginDesc="Soundscape Plug-in for d&amp;b DS100 control" pluginManufacturer="d&amp;b audiotechnik GmbH &amp; Co. KG"
-              pluginManufacturerCode="dbAu" pluginCode="sVst" pluginChannelConfigs="{2, 2}, {1, 1}"
-              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
-              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="SoundscapePlugin"
+<JUCERPROJECT id="MFvkL5" name="SoundscapePlugin128ch" projectType="audioplug"
+              version="4.1" bundleIdentifier="com.dbaudio.SoundscapePlugin128ch"
+              pluginName="d&amp;b Soundscape 128ch" pluginDesc="Soundscape Plug-in for d&amp;b DS100 control"
+              pluginManufacturer="d&amp;b audiotechnik GmbH &amp; Co. KG" pluginManufacturerCode="dbAu"
+              pluginCode="sVst" pluginChannelConfigs="{2, 2}, {1, 1}" pluginIsSynth="0"
+              pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
+              pluginEditorRequiresKeys="0" pluginAUExportPrefix="SoundscapePlugin128ch"
               pluginRTASCategory="" aaxIdentifier="com.dbaudio.SoundscapePlugin"
               pluginAAXCategory="0" companyName="d&amp;b audiotechnik GmbH &amp; Co. KG"
               companyWebsite="http://www.dbaudio.com" companyEmail="info@dbaudio.com"
-              displaySplashScreen="0" reportAppUsage="0" companyCopyright="d&amp;b audiotechnik GmbH &amp; Co. KG"
+              displaySplashScreen="1" reportAppUsage="0" companyCopyright="d&amp;b audiotechnik GmbH &amp; Co. KG"
               defines="JucePlugin_AAXPageTableFile=&quot;SoundscapePlugin.xml&quot;, JucePlugin_AAXDisableDefaultSettingsChunks"
               pluginFormats="buildAU,buildVST3" buildVST="0" buildVST3="1"
               buildAU="1" buildAUv3="0" buildRTAS="0" buildAAX="0" buildStandalone="0"
               enableIAA="0" pluginVST3Category="Spatial" jucerFormatVersion="1">
-  <MAINGROUP id="cS7SrP" name="SoundscapePlugin">
+  <MAINGROUP id="cS7SrP" name="SoundscapePlugin128ch">
     <GROUP id="{DA3507CD-D9BE-4153-5873-D44DBA9EAF0C}" name="Images">
       <FILE id="syw8sz" name="icon_hamburger_16x16.png" compile="1" resource="1"
             file="Images/icon_hamburger_16x16.png"/>
@@ -58,13 +59,14 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input"
-               iosDevelopmentTeamID="G24Y233R69">
+    <XCODE_MAC targetFolder="Builds/MacOSX" hardenedRuntime="1" hardenedRuntimeOptions="com.apple.security.device.audio-input">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SoundscapePlugin"
-                       enablePluginBinaryCopyStep="0" customXcodeFlags="OTHER_CODE_SIGN_FLAGS = $(inherited) --timestamp --deep -s 'Developer ID Application: d&amp;b audiotechnik GmbH'"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SoundscapePlugin"
-                       enablePluginBinaryCopyStep="0" customXcodeFlags="OTHER_CODE_SIGN_FLAGS = $(inherited) --timestamp --deep -s 'Developer ID Application: d&amp;b audiotechnik GmbH'"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SoundscapePlugin128chdeb"
+                       enablePluginBinaryCopyStep="1" vst3BinaryLocation="/Users/psch/dev/dev_plugins/vst3"
+                       auBinaryLocation="/Users/psch/dev/dev_plugins/AU"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SoundscapePlugin128ch"
+                       enablePluginBinaryCopyStep="1" auBinaryLocation="/Users/psch/dev/release_plugins/AU"
+                       vst3BinaryLocation="/Users/psch/dev/release_plugins/vst3"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_osc" path="../JUCE/modules"/>
