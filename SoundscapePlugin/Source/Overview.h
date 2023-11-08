@@ -179,11 +179,20 @@ private:
 	 * DS100 IP Address label
 	 */
 	std::unique_ptr<CLabel>	m_ipAddressLabel;
+	/**
+	* DS100 IP Address label
+	*/
+	std::unique_ptr<CLabel>	m_ipAddressLabelEnbridge;
 
 	/**
 	 * Text editor for the DS100 IP Address
 	 */
 	std::unique_ptr<CTextEditor>	m_ipAddressTextEdit;
+
+	/**
+	 * Text editor for the En-Bridge IP Address
+	 */
+	std::unique_ptr<CTextEditor>	m_ipAddressTextEditEnbridge;
 
 	/**
 	 * Send/receive rate label

@@ -48,8 +48,8 @@ static constexpr int OSC_INTERVAL_DEF = 50;		//< Default OSC messaging rate in m
 
 static const String OSC_DEFAULT_IP("127.0.0.1");	//< Default IP Address
 
-static constexpr int RX_PORT_DS100 = 50010;		//< UDP port which the DS100 is listening to for OSC
-static constexpr int RX_PORT_HOST = 50011;		//< UDP port to which the DS100 will send OSC replies
+static constexpr int RX_PORT_DS100 = 50009;		//< UDP port which the DS100 is listening to for OSC
+static constexpr int RX_PORT_HOST = 50008;		//< UDP port to which the DS100 will send OSC replies
 
 static constexpr int KEEPALIVE_TIMEOUT = 5000;	//< Milliseconds without response after which we consider plugin "Offline"
 static constexpr int KEEPALIVE_INTERVAL = 1500;	//< Interval at which keepalive (ping) messages are sent, in milliseconds

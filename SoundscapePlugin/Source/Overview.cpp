@@ -282,6 +282,14 @@ COverviewComponent::COverviewComponent()
 	m_ipAddressLabel = std::make_unique<CLabel>("IP Address Label", "IP Address:");
 	addAndMakeVisible(m_ipAddressLabel.get());
 
+	// IP En-Bridge
+	m_ipAddressTextEditEnbridge = std::make_unique<CTextEditor>("En-Bridge");
+	m_ipAddressTextEditEnbridge->addListener(this);
+	addAndMakeVisible(m_ipAddressTextEditEnbridge.get());
+	m_ipAddressLabelEnbridge = std::make_unique<CLabel>("IP Address Label Enbridge", "En-Bridge Address:");
+	addAndMakeVisible(m_ipAddressLabelEnbridge.get());
+
+
 	// Online
 	m_onlineLed = std::make_unique<CButton>("");
 	m_onlineLed->setEnabled(false);

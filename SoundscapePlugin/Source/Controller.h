@@ -125,6 +125,20 @@ protected:
 	String					m_ipAddress;
 
 	/**
+	* IP Address of DS100.
+	*/
+	String					m_ipAddressDS100;
+	/**
+	 * IP Address of En-Bridge.
+	 */
+	String					m_ipAddressEnbridge;
+
+	/**
+	* Use En-Bridge to communicate with DS100, sets receive Port 
+	*/
+	bool					m_useEnbridge;
+
+	/**
 	 * Interval at which OSC messages are sent to the host, in ms.
 	 */
 	int						m_oscMsgRate;

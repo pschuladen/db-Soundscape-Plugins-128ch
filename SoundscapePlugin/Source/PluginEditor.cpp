@@ -62,7 +62,7 @@ static constexpr int GUI_UPDATE_DELAY_TICKS = 15;
 /*
  * Default Plug-In window size.
  */
-static constexpr Point<int> GUI_DEFAULT_PLUGIN_WINDOW_SIZE(488, 380);
+static constexpr Point<int> GUI_DEFAULT_PLUGIN_WINDOW_SIZE(488, 430);
 
 /*
  * Initialize user's Plug-In window size with default values.
@@ -183,7 +183,7 @@ CPluginEditor::CPluginEditor(CPlugin& parent)
 	addAndMakeVisible(m_posAreaLabel.get());
 
 	m_sourceIdDigital = std::make_unique<CDigital>("Source Id");
-	m_sourceIdDigital->SetRange(1, 64);
+	m_sourceIdDigital->SetRange(1, 128);
 	m_sourceIdDigital->AddListeners(this, this);
 	addAndMakeVisible(m_sourceIdDigital.get());
 
@@ -193,9 +193,22 @@ CPluginEditor::CPluginEditor(CPlugin& parent)
 	m_ipAddressTextEdit = std::make_unique<CTextEditor>("IP Address");
 	m_ipAddressTextEdit->addListener(this);
 	addAndMakeVisible(m_ipAddressTextEdit.get());
-	m_ipAddressLabel = std::make_unique<CLabel>("IP Address Label", "IP Address:");
+	m_ipAddressLabel = std::make_unique<CLabel>("IP Address Label", "IP DS100:");
 	addAndMakeVisible(m_ipAddressLabel.get());
 
+	m_ipAddressTextEditEnbridge = std::make_unique<CTextEditor>("En-Bridge Address");
+	m_ipAddressTextEditEnbridge->addListener(this);
+	addAndMakeVisible(m_ipAddressTextEditEnbridge.get());
+	m_ipAddressLabelEnbridge = std::make_unique<CLabel>("IP Address Label Enbridge", "IP En-Bridge:");
+	addAndMakeVisible(m_ipAddressLabelEnbridge.get());
+
+	m_setSendModeDirect = std::make_unique<CButton>("");
+	m_setSendModeDirect->addListener(this);
+	addAndMakeVisible(m_setSendModeDirect.get());
+	m_setSendModeEnBridge = std::make_unique<CButton>("");
+	m_setSendModeEnBridge->addListener(this);
+	addAndMakeVisible(m_setSendModeEnBridge.get());
+	
 	m_onlineLed = std::make_unique<CButton>("");
 	m_onlineLed->setEnabled(false);
 	m_onlineLed->SetCornerRadius(10);
@@ -275,13 +288,13 @@ CPluginEditor::CPluginEditor(CPlugin& parent)
 		// Larger GUI for consoles.
 		if (m_pluginWindowSize == GUI_DEFAULT_PLUGIN_WINDOW_SIZE)
 		{
-			m_pluginWindowSize = Point<int>(684, 544);
+			m_pluginWindowSize = Point<int>(684, 600);
 		}
 	}
 
 	// Backup user's window size, since setResizeLimits() calls resized(), which overwrites it.
 	Point<int> tmpSize(m_pluginWindowSize);
-	setResizeLimits(488, 380, 1920, 1080);
+	setResizeLimits(488, 500, 1920, 1080);
 	m_pluginWindowSize = tmpSize;
 
 	// Resize the new plugin's window to the same as the last.
@@ -518,6 +531,20 @@ void CPluginEditor::buttonClicked(Button *button)
 			// Un-toggle button.			
 			button->setToggleState(false, NotificationType::dontSendNotification);
 		}
+		else if (button == m_setSendModeDirect.get())
+		{
+			if (button->getToggleState())
+			{
+				m_setSendModeEnBridge.get()->setToggleState(false, false);
+			}
+		}
+		else if (button == m_setSendModeEnBridge.get())
+		{
+			if (button->getToggleState())
+			{
+				m_setSendModeDirect.get()->setToggleState(false, false);
+			}
+		}
 	}
 }
 
@@ -624,7 +651,7 @@ void CPluginEditor::paint(Graphics& g)
 
 	// Background
 	g.setColour(CDbStyle::GetDbColor(CDbStyle::DarkColor));
-	g.fillRect(Rectangle<int>(0, 43, w, h - 87));
+	g.fillRect(Rectangle<int>(0, 43, w, h - 112));
 
 	// Little lines between version and logo
 	g.setColour(CDbStyle::GetDbColor(CDbStyle::ButtonColor));
@@ -653,9 +680,9 @@ void CPluginEditor::resized()
 	int w = bounds.getWidth();
 	int h = bounds.getHeight();
 	int xOffset = w - 468;
-	int yOffset = h - 370;
+	int yOffset = h - 410;
 	int vStartPos = 10;
-	int vStartPos2 = h - 35;
+	int vStartPos2 = h - 60;
 	int hSecondPos = w - 106;
 
 	// 2D Surface
@@ -701,10 +728,16 @@ void CPluginEditor::resized()
 	// Ip Address
 	m_ipAddressLabel->setBounds(Rectangle<int>(5, vStartPos2, 75, 25));
 	m_ipAddressTextEdit->setBounds(Rectangle<int>(80, vStartPos2, 140, 25));
+	m_setSendModeDirect->setBounds(Rectangle<int>(220, vStartPos2, 20, 20));
+
+	// Ip Address Enbridge
+	m_ipAddressLabelEnbridge->setBounds(Rectangle<int>(5, vStartPos2+25, 75, 25));
+	m_ipAddressTextEditEnbridge->setBounds(Rectangle<int>(80, vStartPos2+25, 140, 25));
+	m_setSendModeEnBridge->setBounds(Rectangle<int>(220, vStartPos2 + 25, 20, 20));
 
 	// Rate
-	m_rateLabel->setBounds(Rectangle<int>(233, vStartPos2, 65, 25));
-	m_rateTextEdit->setBounds(Rectangle<int>(296, vStartPos2, 50, 25));
+	m_rateLabel->setBounds(Rectangle<int>(253, vStartPos2, 65, 25));
+	m_rateTextEdit->setBounds(Rectangle<int>(316, vStartPos2, 50, 25));
 
 	// Online
 	m_onlineLed->setBounds(Rectangle<int>(w - 40, vStartPos2, 24, 24));
@@ -729,7 +762,7 @@ void CPluginEditor::resized()
 	// Resize the GUI Overlay (if any)
 	if (m_overlay)
 	{
-		m_overlay->setBounds(Rectangle<int>(0, 44, w, getLocalBounds().getHeight() - 89));
+		m_overlay->setBounds(Rectangle<int>(0, 44, w, getLocalBounds().getHeight() - 120));
 		m_overlay->toFront(true);
 	}
 

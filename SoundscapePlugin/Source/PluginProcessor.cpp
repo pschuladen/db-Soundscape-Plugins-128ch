@@ -47,7 +47,7 @@ namespace dbaudio
 
 
 static constexpr SourceId SOURCE_ID_MIN = 1;		//< Minimum maxtrix input number / SourceId
-static constexpr SourceId SOURCE_ID_MAX = 64;		//< Highest maxtrix input number / SourceId
+static constexpr SourceId SOURCE_ID_MAX = 128;		//< Highest maxtrix input number / SourceId
 static constexpr int DEFAULT_COORD_MAPPING = 1;		//< Default coordinate mapping
 
 /*

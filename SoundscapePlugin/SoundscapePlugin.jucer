@@ -100,6 +100,27 @@
         <MODULEPATH id="juce_events" path="../JUCE/modules"/>
       </MODULEPATHS>
     </VS2019>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" enablePluginBinaryCopyStep="1" vst3BinaryLocation="C:\Users\paul.schuladen\dev2\dev_plugins"
+                       targetName="SoundscapePlugin-128ch_deb"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="SoundscapePlugin-128ch"
+                       enablePluginBinaryCopyStep="1" vst3BinaryLocation="C:\Users\paul.schuladen\dev2\release_plugins"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_osc" path="C:\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2022>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

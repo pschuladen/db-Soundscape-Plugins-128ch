@@ -149,6 +149,10 @@ private:
 	 * DS100 IP Address label
 	 */
 	std::unique_ptr<CLabel>	m_ipAddressLabel;
+	/*
+ * DS100 IP Address label
+ */
+	std::unique_ptr<CLabel>	m_ipAddressLabelEnbridge;
 
 	/*
 	 * Send/receive rate label
@@ -169,6 +173,21 @@ private:
 	 * Text editor for the DS100 IP Address
 	 */
 	std::unique_ptr<CTextEditor>	m_ipAddressTextEdit;
+	/**
+	* Text editor for the En-Bridge IP Address
+	*/
+	std::unique_ptr<CTextEditor>	m_ipAddressTextEditEnbridge;
+
+	/*
+	 * Button for OSC Send mode (part of a radio button pair)
+	 */
+	std::unique_ptr<CButton> m_setSendModeDirect;
+	/*
+	 * Button for OSC Send mode (part of a radio button pair)
+	 */
+	std::unique_ptr<CButton> m_setSendModeEnBridge;
+
+
 
 	/*
 	 * Text editor for the OSC send/receive rate in ms.
